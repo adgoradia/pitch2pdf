@@ -1,0 +1,16 @@
+[phases.setup]
+nixPkgs = ["chromium"]
+
+[phases.build]
+cmds = ["npm install"]
+
+[start]
+cmd = "node server.js"
+```
+
+Then update your `server.js` to tell Playwright to use the system Chromium instead of downloading its own:
+
+In Railway's **Variables** tab, add:
+```
+PLAYWRIGHT_BROWSERS_PATH=0
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium
